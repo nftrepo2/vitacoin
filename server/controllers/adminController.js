@@ -145,7 +145,7 @@ const sendEmail = async ( fullname,email, available,  balance, bonus, widthdrawB
       to:email,
       subject: 'Dashboard Update',
       html: `<p>Greetings ${fullname},<br>Here are your availabe balances and your trading account status.<br>
-      login to see your dashboard:<br>Email:${email}<br>Available balance: ${available}<br>Deposit Balance: ${balance}<br>Bonus:${bonus}<br>Widthdrawal Balance: ${widthdrawBalance}<br>Account Profit:${profit}<br>Total Deposit:${totalDeposit}<br>Total Widthdraw: ${totalWidthdraw}<br> Account Signals:${signal}<br> Verification status: ${verifiedStatus}<br>Account Level: ${level}}<br>trading sessions: ${session}<br><br>You can login here: https://vitacoininvestments.com/login<br>.<br>Thank you.</p>`
+      login to see your dashboard:<br>Email:${email}<br>Available balance: ${available}<br>Deposit Balance: ${balance}<br>Bonus:${bonus}<br>Widthdrawal Balance: ${widthdrawBalance}<br>Account Profit:${profit}<br>Total Deposit:${totalDeposit}<br>Total Widthdraw: ${totalWidthdraw}<br> Account Signals:${signal}<br> Verification status: ${verifiedStatus}<br>Account Level: ${level}<br>trading sessions: ${session}<br><br>You can login here: https://vitacoininvestments.com/login<br>.<br>Thank you.</p>`
   }
   transporter.sendMail(mailOptions, (error, info) =>{
     if(error){
