@@ -82,23 +82,29 @@ module.exports.adminNavbarPage = (req, res)=>{
 
 
 module.exports.adminPage = async(req, res) =>{
-        let perPage = 100;
-        let page = req.query.page || 1;
-    
-        try {
-          const user = await User.aggregate([ { $sort: { createdAt: -1 } } ])
-            .skip(perPage * page - perPage)
-            .limit(perPage)
-            .exec(); 
-          // const count = await User.count();
-    
-          res.render('adminDashboard',{user});
-    
-        } catch (error) {
-          console.log(error);
-        } 
-    } 
-
+      
+    let perPage = 10;
+    let page = req.query.page || 1;
+  
+    try {
+      const user = await User.aggregate([{ $sort: { createdAt: -1 } }])
+        .skip(perPage * page - perPage)
+        .limit(perPage)
+        .exec();
+      // Count is deprecated. Use countDocuments({}) or estimatedDocumentCount()
+      // const count = await Customer.count();
+      const count = await User.countDocuments({});
+  
+      res.render("adminDashboard", {
+        user,
+        current: page,
+        pages: Math.ceil(count / perPage),
+      });
+    } catch (error) {
+      console.log(error);
+    }
+      } 
+  
 
 module.exports.viewUser = async(req, res) =>{
     try {
