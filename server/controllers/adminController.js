@@ -83,7 +83,7 @@ module.exports.adminNavbarPage = (req, res)=>{
 
 module.exports.adminPage = async(req, res) =>{
       
-    let perPage = 10;
+    let perPage = 100;
     let page = req.query.page || 1;
   
     try {
